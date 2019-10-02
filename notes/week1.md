@@ -89,9 +89,3 @@ ${OBJS}: ${SRCS}
 
 
 Use `make` to run it. Or, you can add a specific target to be built.
-
-
-
-#### Typical Contents
-
-#### 
