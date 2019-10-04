@@ -1,6 +1,9 @@
 #ifndef READMATRIX_HPP
 #define READMATRIX_HPP
 
-void readMatrix(int *, int);
+class ReadMatrix
+{
+    public: void readMatrix(int *[], int);
+};
 
 #endif

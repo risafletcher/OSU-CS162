@@ -5,7 +5,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void readMatrix(int *array[size], int size)
+void ReadMatrix::readMatrix(int *array[], int size)
 {
     int numberOfElements;
 
@@ -20,7 +20,7 @@ void readMatrix(int *array[size], int size)
     {
         for (int j = 0; j < size; j++)
         {
-            cin >> *array[i][j];
+            cin >> array[i][j];
         }
     }
 }

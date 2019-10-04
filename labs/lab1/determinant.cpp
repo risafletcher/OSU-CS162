@@ -1,9 +1,8 @@
 #include "determinant.hpp"
 #include <iostream>
 
-int determinant(int **array, int size)
+int Determinant::determinant(int *array[], int size)
 {
-
     if (size == 2)
     {
         return (array[0][0] * array[1][1]) - (array[0][1] * array[1][0]);
@@ -15,8 +14,8 @@ int determinant(int **array, int size)
         int b = array[0][1];
         int c = array[0][2];
 
-        int matrixA[size - 1][size - 1],
-            matrixB[size - 1][size - 1],
+        int matrixA[size - 1][size -1],
+            matrixB[size - 1][size -1],
             matrixC[size - 1][size - 1];
 
         for (int i = 1; i < size; i++)
@@ -41,10 +40,10 @@ int determinant(int **array, int size)
             }
         }
 
-        int aTimesDeterminant = a * determinant(matrixA, 2);
-        int bTimesDeterminant = b * determinant(matrixB, 2);
-        int cTimesDeterminant = c * determinant(matrixC, 2);
+        int aTimesDeterminant = a * (matrixA[0][0] * matrixA[1][1]) - (matrixA[0][1] * matrixA[1][0]);
+        int bTimesDeterminant = b * (matrixB[0][0] * matrixB[1][1]) - (matrixB[0][1] * matrixB[1][0]);
+        int cTimesDeterminant = c * (matrixC[0][0] * matrixC[1][1]) - (matrixC[0][1] * matrixC[1][0]);
 
-        return aTimesDeterminant - bTimesDeterminant - cTimesDeterminant;
+        return (aTimesDeterminant - bTimesDeterminant) + cTimesDeterminant;
     }
 }
