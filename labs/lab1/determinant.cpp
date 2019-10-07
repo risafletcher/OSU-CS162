@@ -1,7 +1,9 @@
 #include "determinant.hpp"
 #include <iostream>
+using std::cout;
+using std::endl;
 
-int Determinant::determinant(int *array[], int size)
+int determinant(int *array[], int size)
 {
     if (size == 2)
     {
@@ -10,40 +12,45 @@ int Determinant::determinant(int *array[], int size)
 
     if (size == 3)
     {
+        // following mathisfun.com's 3x3 matrix determinant formula
         int a = array[0][0];
         int b = array[0][1];
         int c = array[0][2];
 
-        int matrixA[size - 1][size -1],
-            matrixB[size - 1][size -1],
-            matrixC[size - 1][size - 1];
+        // a, b, and c's matrices should be the resulting matrix when
+        // all values in the row and column of the variable are removed
+        const int SIZE = 2;
+        int aMatrix[SIZE][SIZE]; // define three 2D arrays to store new matrices
+        int bMatrix[SIZE][SIZE];
+        int cMatrix[SIZE][SIZE];
 
-        for (int i = 1; i < size; i++)
+
+        // iterate upon the existing array but offset the row by 1
+        for (int arrayRow = 1; arrayRow < SIZE + 1; arrayRow++)
         {
-            for (int j = 0; j < size; j++)
+            for (int arrayCol = 0; arrayCol < SIZE + 1; arrayCol++)
             {
-                if (j == 0)
+                // if the iteratee is in a, b, or c's column, don't include it
+                // in the new matrices for a,b, and c
+                if (arrayCol != 0)
+                    aMatrix[arrayRow - 1][arrayCol - 1] = array[arrayRow][arrayCol];
+                if (arrayCol != 1)
                 {
-                    matrixB[i - 1][j] = array[i][j];
-                    matrixC[i - 1][j] = array[i][j];
+                    if (arrayCol == 2)
+                        bMatrix[arrayRow - 1][arrayCol - 1] = array[arrayRow][arrayCol];
+                    if (arrayCol == 0)    
+                        bMatrix[arrayRow - 1][arrayCol] = array[arrayRow][arrayCol];
                 }
-                if (j == 1)
-                {
-                    matrixA[i - 1][j - 1] = array[i][j];
-                    matrixC[i - 1][j] = array[i][j];
-                }
-                if (j == 2)
-                {
-                    matrixA[i - 1][j - 1] = array[i][j];
-                    matrixB[i - 1][j - 1] = array[i][j];
-                }
+                if (arrayCol != 2)
+                    cMatrix[arrayRow - 1][arrayCol] = array[arrayRow][arrayCol];
             }
         }
 
-        int aTimesDeterminant = a * (matrixA[0][0] * matrixA[1][1]) - (matrixA[0][1] * matrixA[1][0]);
-        int bTimesDeterminant = b * (matrixB[0][0] * matrixB[1][1]) - (matrixB[0][1] * matrixB[1][0]);
-        int cTimesDeterminant = c * (matrixC[0][0] * matrixC[1][1]) - (matrixC[0][1] * matrixC[1][0]);
-
-        return (aTimesDeterminant - bTimesDeterminant) + cTimesDeterminant;
+        // get determinants for each of the new matrices
+        int determinantA = (aMatrix[0][0] * aMatrix[1][1]) - (aMatrix[0][1] * aMatrix[1][0]);
+        int determinantB = (bMatrix[0][0] * bMatrix[1][1]) - (bMatrix[0][1] * bMatrix[1][0]);
+        int determinantC = (cMatrix[0][0] * cMatrix[1][1]) - (cMatrix[0][1] * cMatrix[1][0]);
+        cout << a * determinantA << " " << b * determinantB << " " << c * determinantC << endl;
+        return (a * determinantA) - (b * determinantB) + (c * determinantC);
     }
 }

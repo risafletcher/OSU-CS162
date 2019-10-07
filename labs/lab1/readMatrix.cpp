@@ -5,17 +5,13 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void ReadMatrix::readMatrix(int *array[], int size)
+void readMatrix(int *array[], int size)
 {
-    int numberOfElements;
-
-    if (size == 2)
-        numberOfElements = 4;
-    if (size == 3)
-        numberOfElements = 9;
-
+    // determine the number of elements in the matrix
+    int numberOfElements = size * size;
+    // prompt
     cout << "Please enter " << numberOfElements << " numbers." << endl;
-
+    // loop through the 2D array and populate with user input data
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)

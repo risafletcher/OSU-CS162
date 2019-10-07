@@ -8,8 +8,7 @@ using std::endl;
 int main()
 {
     int matrixSize;
-    ReadMatrix readObject;
-    Determinant determinantObject;
+
     // get user input
     cout << "Please choose the size of your matrix:" << endl;
     cout << "Enter \"2\" for a 2x2 or \"3\" for a 3x3: ";
@@ -24,11 +23,13 @@ int main()
     int** matrix = new int*[matrixSize];
     // loop through the array of pointers and dynamically allocate memory
     // for the new arrays
+
     for (int i = 0; i < matrixSize; i++)
         matrix[i] = new int[matrixSize];
 
-    // pass the matrix by pointer
-    readObject.readMatrix(matrix, matrixSize);
+    // pass the address (pointer) of the array of arrays
+    // to the read function
+    readMatrix(matrix, matrixSize);
 
     // print the matrix
     cout << "Your matrix: " << endl;
@@ -42,12 +43,11 @@ int main()
     }
 
     // print the determinant
-    int calculatedDeterminant = determinantObject.determinant(matrix, matrixSize);
+    int calculatedDeterminant = determinant(matrix, matrixSize);
     cout << "The determinant of your matrix is: " << calculatedDeterminant << endl;
 
     // CLEAN UP
     delete[] matrix;
     matrix = nullptr;
-    
     return 0;
 }
