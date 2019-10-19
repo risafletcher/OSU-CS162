@@ -1,3 +1,5 @@
 .vscode
 launch.json
 tasks.json
+.vs
+.DS_Store
