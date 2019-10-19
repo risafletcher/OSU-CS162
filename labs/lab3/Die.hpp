@@ -1,8 +1,8 @@
 /*******************************************************************************
 ** Author:       Risa Fletcher
 ** Date:         10/20/19
-** Description:  A program that accepts a text file and outputs the character
-**               counts into new text files.
+** Description:  A class that holds a number of die sides and provides a method
+**               for a random "toss" which returns an int between 1 - N
 *******************************************************************************/
 #ifndef DIE_HPP
 #define DIE_HPP
@@ -13,8 +13,8 @@ class Die
         int n;  // number of sides on the individual die
 
     public:
-
-        int randomInt();    // random int between 1 and n
+        Die(int);
+        int randomInt(); // random int between 1 and n
 };
 
 #endif
