@@ -9,12 +9,11 @@
 
 class Die
 {
-    private:
-        int n;  // number of sides on the individual die
-
     public:
+        int n;  // number of sides on the individual die
+        Die();
         Die(int);
-        int randomInt(); // random int between 1 and n
+        int roll(); // random int between 1 and n
 };
 
 #endif

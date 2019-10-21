@@ -6,8 +6,20 @@
 **               Die object.
 *******************************************************************************/
 #include "LoadedDie.hpp"
+#include <iostream>
 
-int LoadedDie::loadedRandomInt()
+LoadedDie::LoadedDie(int n)
 {
-    
+    this->n = n;
+}
+
+int LoadedDie::roll()
+{
+    int firstRoll = std::rand() % n + 1;
+    int secondRoll = std::rand() % n + 1;
+
+    if (firstRoll > secondRoll)
+        return firstRoll;
+    else
+        return secondRoll;
 }

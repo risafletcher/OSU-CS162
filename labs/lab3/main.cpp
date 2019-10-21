@@ -5,11 +5,13 @@
 **               counts into new text files.
 *******************************************************************************/
 #include <iostream>
+#include "Game.hpp"
 
 
 int main()
 {
-    
+    Game game;
+    game.playGame();
 
     return 0;
 }

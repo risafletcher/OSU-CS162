@@ -12,7 +12,8 @@
 class LoadedDie : public Die
 {
     public:
-        int loadedRandomInt();
+        LoadedDie(int);
+        int roll();
 };
 
 #endif

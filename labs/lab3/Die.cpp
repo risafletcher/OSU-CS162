@@ -7,12 +7,17 @@
 #include "Die.hpp"
 #include <iostream>
 
-Die::Die(int numSides)
+Die::Die()
 {
-    n = numSides;
+    n = 6;
 }
 
-int Die::randomInt()
+Die::Die(int n)
 {
-    return std::rand() % n - 1;
+    this->n = n;
+}
+
+int Die::roll()
+{
+    return std::rand() % n + 1;
 }
