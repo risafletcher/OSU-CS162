@@ -122,7 +122,7 @@ Problems may occur when copying objects with pointers, as the value of the point
 
 ![1571634087888](assets/1571634087888.png)
 
-A programmer-defined copy constructor must have a single parameter that is a reference to the same class. This avoids the problems of the default copy constructor by allocating separate memory for the pointer of the new object before doing the copy. The parameter should be a const reference because the copy constructor should not modify the object being copied.
+A programmer-defined copy constructor must have a single parameter that is a reference to the *same* class. This avoids the problems of the default copy constructor by allocating separate memory for the pointer of the new object before doing the copy. The parameter should be a const reference because the copy constructor should not modify the object being copied.
 
 ```c++
 NumberArray::NumberArray(const NumberArray &obj)
@@ -135,4 +135,14 @@ Class copy constructors are called when:
 - A variable is being initialized from an object of the same class
 - A function is called with a value parameter of the class
 - A function is returning a value that is an object of the class
+
+
+
+### 11.6 Operator Overloading
+
+C++ allows you to redefine how standard operators work when used with class objects.
+
+To address the problems that result from memberwise assignment of objects, we need to modify the behavior of the assignment operator so that it does something other than memberwise assignment when it is applied to objects of classes that have pointer members. In effect, we are supplying a different version of the assignment operator to be used for objects of that class. In so doing, we say that we are *overloating* the assignment operator.
+
+![image-20191027100907264](assets/image-20191027100907264.png)
 
