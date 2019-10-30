@@ -9,12 +9,51 @@
   - **age**
     - Adult: >= 3 days
     - Baby: < 3
+  - **incrementAge()**
+  - **isAdult()**
   - **cost**
-  - **numBabies**
+  - **numberOfBabies**
   - **foodCost**
     - user-defined or const value (per day)
   - **payOffRate**
     - per day
+
+#### Zoo
+
+- ##### private:
+
+  - **numAnimals**: 10 (at start)
+  - **bank**
+  - **day**
+  - **tigers[numAnimals]** (dynamic array of Tigers)
+  - **penguins[numAnimals]** (dynamic array of Penguins)
+  - **turtles[numAnimals]** (dynamic array of Turtles)
+
+- ##### public:
+
+  - **addToBank(int)**
+  - **subtractFromBank(int)**
+  - **addTiger(int age)**
+  - **killTiger()**
+  - **addPenguin(int age)**
+  - **killPenguin()**
+  - **addTurtle(int age)**
+  - **killTurtle()**
+
+#### Game
+
+event enums: { SICKNESS, ATTENDANCE_BOOM, BIRTH }
+
+Animal enums: { TIGER, PENGUIN, TURTLE }
+
+- ##### public:
+
+  - **playAgain**
+  - **start()**
+  - **startMenu()**
+  - **buyAnimal()**
+  - **gameOver()**
+  - **validateInput()**
 
 
 
@@ -46,4 +85,3 @@
   - **numBabies**: 10
   - **foodCost**: 0.5 * Animal::foodCost
   - **payOffRate**: 0.05 * cost
-
