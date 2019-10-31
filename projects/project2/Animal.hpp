@@ -11,16 +11,19 @@ class Animal {
         int age,
             cost,
             numberOfBabies,
-            foodCost,
-            payOffRate;
-
-        bool isAdult();
-        void setFoodCost(int cost);
-        void setPayOffRate(int paymentPerDay);
-        void incrementAge();
+            baseFoodCost = 10,
+            payoff;
 
     public:
-        Animal(int age, int cost, int numberOfBabies, int foodCost);
+        Animal();
+        Animal(int age, int cost, int numberOfBabies, int baseFoodCost);
+        int getCost();
+        int getPayoff();
+        int getNumberOfBabies();
+        bool isAdult();
+        void setBaseFoodCost(int cost);
+        void setPayoffRate(int paymentPerDay);
+        void incrementAge();
 };
 
 #endif

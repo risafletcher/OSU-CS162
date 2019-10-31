@@ -355,3 +355,52 @@ public:
 
 **derived class**: the specialized class
 
+```c++
+class Student : public Person
+// Derived class	Base class
+```
+
+The key word `public` that precedes the name of the base class is the *base class access specification*. It affects how the members of the base class will be accessed by the member functions of the derived class and by code outside of the two classes.
+
+Whenever inheritance is involved, all objects should be dynamically allocated and accessed through pointers. Derived classes contain more information than base classes, so a derived class cannot be passed as base classes because the additional information will be sliced off by the compiler. This does not occur if we are dealing with pointers because all pointers have the same size.
+
+
+
+### 11.12 Protected Members and Class Access
+
+Protected members of a base class are like private members, except they may be accessed by derived classes. The base class access specification determines how private, protected, and public base class members are accessed when they are inherited by the derived class.
+
+| **Base Class Access Specification** | **How Members of the Base Class Appear in the Derived Class** |
+| ----------------------------------- | ------------------------------------------------------------ |
+| `private`                           | - Private members of the base class are inaccessible to the derived class. <br />- Protected members of the base class become private members of the derived class. <br />- Public members of the base class become private members of the derived class. |
+| `protected`                         | - Private members of the base class are inaccessible to the derived class. <br />- Protected members of the base class become protected members of the derived class.<br />- Public members of the base class become protected members of the derived class. |
+| `public`                            | - Private members of the base class are inaccessible to the derived class.<br />- Protected members of the base class become protected members of the derived class.<br />- Public members of the base class become public members of the derived class. |
+
+![image-20191029212908051](assets/image-20191029212908051.png)
+
+
+
+### 11.13 Constructors, Destructors, and Inheritance
+
+When an object of a derived class is being instantiated, the base class constructor is called before the derived class constructor. When the object is destroyed, the derived class destructor is called before the base class destructor.
+
+- It is good programming practice to tag the destructors of base and derived classes with the key word `virtual`.
+
+- It is important to remember that the arguments to the base class constructor must be specified in the *definition* of the derived class constructor, and not in its *declaration*.
+
+
+
+#### 11.14 Overriding Base Class Functions
+
+A derived class can override a member function of its base class by defining a derived class member function with the same name and parameter list.
+
+- **Overriding** can only be done in the context of inheritance and refers to the defining of a member function by a derived class when the base class already has a member function of the same name and parameter list. 
+
+- **Overloading** refers to the definition of different functions within the same class with the same name and *different* parameter lists. Overloading can also refer to the definition of different functions with different parameter lists at the global level.
+
+You can gain access to an overridden member function using the *scope resolution operator*:
+
+```c++
+Person::getName();
+```
+

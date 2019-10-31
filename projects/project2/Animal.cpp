@@ -5,12 +5,12 @@
 *******************************************************************************/
 #include "Animal.hpp"
 
-Animal::Animal(int age, int cost, int numberOfBabies, int foodCost)
+Animal::Animal(int age, int cost, int numberOfBabies, int baseFoodCost)
 {
     this->age = age;
     this->cost = cost;
     this->numberOfBabies = numberOfBabies;
-    setFoodCost(foodCost);
+    setBaseFoodCost(baseFoodCost);
 }
 
 bool Animal::isAdult()
@@ -18,17 +18,32 @@ bool Animal::isAdult()
     return age >= 3;
 }
 
-void Animal::setFoodCost(int foodCost)
+void Animal::setBaseFoodCost(int baseFoodCost)
 {
-    this->foodCost = foodCost;
+    this->baseFoodCost = baseFoodCost;
 }
 
-void Animal::setPayOffRate(int paymentPerDay)
+void Animal::setPayoffRate(int payoff)
 {
-    payOffRate = paymentPerDay;
+    this->payoff = payoff;
 }
 
 void Animal::incrementAge()
 {
     age++;
+}
+
+int Animal::getCost()
+{
+    return cost;
+}
+
+int Animal::getPayoff()
+{
+    return payoff;
+}
+
+int Animal::getNumberOfBabies()
+{
+    return numberOfBabies;
 }

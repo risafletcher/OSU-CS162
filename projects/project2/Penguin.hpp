@@ -10,9 +10,12 @@
 
 class Penguin : public Animal
 {
+    private:
+        int foodCost;
+
     public:
         Penguin();
-        Penguin()
+        Penguin(int);
 };
 
 #endif

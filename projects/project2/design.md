@@ -20,19 +20,23 @@
 
 #### Zoo
 
+event enums: { SICKNESS, ATTENDANCE_BOOM, BIRTH }
+
+Animal enums: { TIGER, PENGUIN, TURTLE }
+
 - ##### private:
 
-  - **numAnimals**: 10 (at start)
+  - **const ANIMAL_CAPACITY**: 10 (at start)
   - **bank**
-  - **day**
   - **tigers[numAnimals]** (dynamic array of Tigers)
   - **penguins[numAnimals]** (dynamic array of Penguins)
   - **turtles[numAnimals]** (dynamic array of Turtles)
-
+  
 - ##### public:
 
   - **addToBank(int)**
   - **subtractFromBank(int)**
+  - **buyAnimal()**
   - **addTiger(int age)**
   - **killTiger()**
   - **addPenguin(int age)**
@@ -42,16 +46,15 @@
 
 #### Game
 
-event enums: { SICKNESS, ATTENDANCE_BOOM, BIRTH }
+- ##### private:
 
-Animal enums: { TIGER, PENGUIN, TURTLE }
+  - **day**
 
 - ##### public:
 
   - **playAgain**
   - **start()**
   - **startMenu()**
-  - **buyAnimal()**
   - **gameOver()**
   - **validateInput()**
 
