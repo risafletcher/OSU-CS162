@@ -88,3 +88,6 @@ Animal enums: { TIGER, PENGUIN, TURTLE }
   - **numBabies**: 10
   - **foodCost**: 0.5 * Animal::foodCost
   - **payOffRate**: 0.05 * cost
+
+
+
