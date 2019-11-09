@@ -71,5 +71,78 @@ p - tF;
 
 // An assignment in the reverse direction, however, requires a type cast:
 tF = static_cast<TFaculty *>(p);
+// using shared pointers
+shared_ptr<Person> ptp;
+shared_ptr<TFaculty> ptf;
+ptf = static_pointer_cast<TFaculty>(ptp);
 ```
+
+- A function parameter that is declared as a pointer to a base class will accept a pointer to a derived class object.
+- A function that declares a return type of a pointer to a particular class *C* may return a pointer to an object of a class derived from _C_.
+
+When a base class pointer is pointing to an object of a derived class, any attempt to access class members not derived from the base class will cause an error. We need to coax the compiler to accept the statement by using type casts, such as `static_cast` and `static_pointer_cast`.
+
+```c++
+static_pointer_cast<Faculty> (pPerson)->setDepartment(Discipline::BIOLOGY);
+// OR
+shared_ptr<Faculty> pFaculty = static_pointer_cast<Faculty>(pPerson);
+pFaculty−>setDepartment(Discipline::BIOLOGY);
+```
+
+- When a pointer to a base class is being used to access a member function that has been overridden by the derived class, the default C++ behavior is to use the version of the function that is defined in the class of the pointer rather than in the class of the object.
+
+
+
+### 15.2 Polymorphism and Virtual Member Functions
+
+**Virtual functions** allow the most specific version of a member function in an inheritance hierarchy to be selected for execution. Virtual functions make polymorphism possible.
+
+A piece of code is said to be ***polymorphic*** if the executing code with different types of data produces different behavior. For example, a function would be called polymorphic if it executes differently when it is passed different types of parameters.
+
+- The virtual characteristic is inherited. If a member function of a derived class overrides a virtual function in the base class, then that member function is automatically virtual itself.
+- Although it is not necessary, many programmers still tag derived virtual functions with the key word `virtual` to identify them.
+
+```c++
+class B
+{
+public:
+   virtual void mfun()
+   {
+      cout << "Base class version";
+   }
+};
+
+class D : public B
+{
+public:
+   virtual void mfun()
+   {
+      cout << "Derived class version";
+   }
+};
+```
+
+- If a virtual member  function is defined outside of the class declaration, the virtual keyword goes on its declaration inside the class but not on the function.
+
+
+
+#### Dynamic and Static Binding
+
+The compiler is said to **bind** the name of a function when it selects the code that should be executed when the function name is invoked. In other words, the compiler binds the name to a function definition when the function is called.
+
+-  **Static binding** happens at compile time and binds the name to a fixed function definition, which is then executed each time the name is invoked.
+  - The compiler uses type information available at compile time. If the code is operating on objects of different classes within an inheritance hierarchy, the only type information available to the compiler will be the base class pointer type used to access all the objects.
+  - Static binding will always use the base class version of a member function.
+- **Dynamic binding** occurs at run-time. It only works if the compiler can determine at runtime the exact class that a subclass object belongs to. The compiler stores runtime type information in every object of a class with a virtual function.
+  - Dynamic binding always uses the version of the member function in the actual class of the object, regardless of the class of the pointer used to access the object.
+
+
+
+`override` tells the compiler that the function is supposed to override a function in the base class. It will cause a compiler error if the function does not actually override any functions.
+
+`final` tells the compiler that a virtual member function cannot be overridden any further down the class hierarchy.
+
+
+
+### 15.3 Abstract Base Classes and Pure Virtual Functions
 
