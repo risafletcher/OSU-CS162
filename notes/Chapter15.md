@@ -146,3 +146,30 @@ The compiler is said to **bind** the name of a function when it selects the code
 
 ### 15.3 Abstract Base Classes and Pure Virtual Functions
 
+Abstract classes and pure virtual functions can be used to define an interface that must be implemented by derived classes.
+
+**Pure virtual function** - a member function for which the class provides no implementation. The C++ way of declaring a pure virtual function is to put the expression `= 0` in the class declaration where the body of the function would otherwise have gone.
+
+**Abstract class** - a class with at least one pure virtual function. The C++ compiler will not allow you to instantiate an abstract class. Abstract classes can only be subclassed, meaning you can only use them as base classes from which to derive other classes. They are essentially templates.
+
+- A class derived from an abstract class inherits all functions in the base class and will itself be an abstract class unless it overrides all the abstract functions it inherits.
+
+Remember the following points about abstract base classes and pure virtual functions:
+
+- When a class contains a pure virtual function, it is an abstract base class.
+- Abstract base classes cannot be instantiated.
+- Pure virtual functions are declared with the = 0 notation and have no body or definition.
+- Pure virtual functions must be overridden in derived classes that need to be instantiated.
+
+
+
+### 15.4 Composition versus Inheritance
+
+Inheritance shold model an “is-a” relation, rather than a “has-a” relation, between the derived and base classes. Composition occurs whenever a class contains an object of another class as one of its member variables.
+
+- It is a good design practice to prefer composition to inheritance whenever possible.
+
+Ways to decide whether to use inheritance or composition:
+
+- Is it natural to think of a C2 object as a special type of C1 object? If so, then you should use inheritance.
+- Will objects of class C2 need to be used in places where objects of class C1 are used? For example, will they need to be passed to functions that take reference parameters of type C1, or pointers to C1? If so, then you should make C2 a derived class of C1.
