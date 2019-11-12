@@ -1,18 +1,17 @@
 /*******************************************************************************
 ** Author:       Risa Fletcher
 ** Date:         11/10/19
-** Description:  Specification for derived Character BlueMen
+** Description:  Specification for derived Character Barbarian
 *******************************************************************************/
-#ifndef BLUEMEN_HPP
-#define BLUEMEN_HPP
+#ifndef BARBARIAN_HPP
+#define BARBARIAN_HPP
 #include "Character.hpp"
 
-class BlueMen : public Character
+class Barbarian : public Character
 {
-public:
-    BlueMen();
-    BlueMen(string);
-    virtual void damage(int, int);
+    public:
+        Barbarian();
+        Barbarian(string);
 };
 
 #endif

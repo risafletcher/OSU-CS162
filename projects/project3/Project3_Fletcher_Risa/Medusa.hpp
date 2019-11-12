@@ -1,18 +1,18 @@
 /*******************************************************************************
 ** Author:       Risa Fletcher
 ** Date:         11/10/19
-** Description:  Specification for derived Character BlueMen
+** Description:  Specification for derived Character Medusa
 *******************************************************************************/
-#ifndef BLUEMEN_HPP
-#define BLUEMEN_HPP
+#ifndef MEDUSA_HPP
+#define MEDUSA_HPP
 #include "Character.hpp"
 
-class BlueMen : public Character
+class Medusa : public Character
 {
 public:
-    BlueMen();
-    BlueMen(string);
-    virtual void damage(int, int);
+    Medusa();
+    Medusa(string);
+    virtual int attackPlayer();
 };
 
 #endif

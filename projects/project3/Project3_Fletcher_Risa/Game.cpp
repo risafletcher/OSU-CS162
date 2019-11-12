@@ -127,19 +127,6 @@ void Game::start()
     }
 }
 
-void Game::playAgainMenu()
-{
-    std::cout << "1. Play Again?" << std::endl;
-    std::cout << "2. Exit" << std::endl;
-
-    int choice = getValidInt(3) + 1;
-
-    if (choice == 1)
-    {
-        playGame();
-    }
-}
-
 void Game::playGame()
 {
     character1 = selectFighter("Player 1");
@@ -199,7 +186,4 @@ void Game::gameOver(shared_ptr<Character> loser)
 {
     std::cout << loser->getName() << " lost." << std::endl;
     std::cout << "Game over." << std::endl;
-    std::cout << "------------------------------" << std::endl;
-    round = 0;
-    playAgainMenu();
 }
